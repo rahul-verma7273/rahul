@@ -1,0 +1,962 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Rahul - Balrampur</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        /* Global Styles */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        :root {
+            --primary-color: #4CAF50;
+            --secondary-color: #2E7D32;
+            --accent-color: #8BC34A;
+            --text-color: #333;
+            --light-color: #f9f9f9;
+            --dark-color: #222;
+        }
+
+        body {
+            background-color: #f5f5f5;
+            color: var(--text-color);
+            line-height: 1.6;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        section {
+            padding: 4rem 0;
+        }
+
+        h2 {
+            font-size: 2.5rem;
+            margin-bottom: 2rem;
+            color: var(--secondary-color);
+            text-align: center;
+        }
+
+        h3 {
+            font-size: 1.8rem;
+            color: var(--primary-color);
+            margin-bottom: 1rem;
+        }
+
+        /* Navbar Styles */
+        .navbar {
+            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+            color: white;
+            padding: 1rem 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            font-size: 1.8rem;
+            font-weight: 700;
+            text-decoration: none;
+            color: white;
+        }
+
+        .logo i {
+            margin-right: 10px;
+            font-size: 2rem;
+        }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+        }
+
+        .nav-links li {
+            margin-left: 2rem;
+        }
+
+        .nav-links a {
+            color: white;
+            text-decoration: none;
+            font-weight: 500;
+            font-size: 1.1rem;
+            transition: all 0.3s ease;
+            padding: 0.5rem 0;
+            position: relative;
+        }
+
+        .nav-links a:hover {
+            color: var(--accent-color);
+        }
+
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background-color: var(--accent-color);
+            transition: width 0.3s ease;
+        }
+
+        .nav-links a:hover::after {
+            width: 100%;
+        }
+
+        .login-btn {
+            background-color: white;
+            color: var(--primary-color);
+            padding: 0.5rem 1.5rem;
+            border-radius: 50px;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            border: none;
+            cursor: pointer;
+        }
+
+        .login-btn:hover {
+            background-color: var(--accent-color);
+            color: white;
+            transform: translateY(-2px);
+        }
+
+        .hamburger {
+            display: none;
+            cursor: pointer;
+            font-size: 1.5rem;
+        }
+
+        /* Hero Section */
+        .hero {
+            padding: 6rem 2rem;
+            text-align: center;
+            background: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url('https://upload.wikimedia.org/wikipedia/commons/thumb/1/11/Balrampur_district_locator_map_UP.svg/1200px-Balrampur_district_locator_map_UP.svg.png');
+            background-size: cover;
+            background-position: center;
+            color: white;
+            min-height: 70vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .hero h1 {
+            font-size: 3.5rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .hero p {
+            font-size: 1.3rem;
+            max-width: 800px;
+            margin-bottom: 2.5rem;
+        }
+
+        .cta-btn {
+            background-color: white;
+            color: var(--primary-color);
+            padding: 0.8rem 2rem;
+            border-radius: 50px;
+            font-weight: 600;
+            font-size: 1.1rem;
+            transition: all 0.3s ease;
+            text-decoration: none;
+        }
+
+        .cta-btn:hover {
+            background-color: var(--accent-color);
+            color: white;
+            transform: translateY(-3px);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+        }
+
+        /* About Section */
+        .about-section {
+            background-color: white;
+        }
+
+        .about-content {
+            background-color: var(--light-color);
+            padding: 3rem;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        }
+
+        .about-content p {
+            margin-bottom: 1.5rem;
+            font-size: 1.1rem;
+            line-height: 1.8;
+        }
+
+        .personal-info {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1.5rem;
+            margin-top: 3rem;
+        }
+
+        .info-card {
+            background-color: white;
+            padding: 2rem;
+            border-radius: 8px;
+            box-shadow: 0 3px 10px rgba(0, 0, 0, 0.1);
+            text-align: center;
+            transition: transform 0.3s ease;
+        }
+
+        .info-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .info-card i {
+            font-size: 2.5rem;
+            color: var(--primary-color);
+            margin-bottom: 1.5rem;
+        }
+
+        .info-card h4 {
+            font-size: 1.3rem;
+            margin-bottom: 0.8rem;
+        }
+
+        .info-card p {
+            font-size: 1.1rem;
+            margin-bottom: 0;
+        }
+
+        /* Services Section */
+        .services-section {
+            background-color: var(--light-color);
+        }
+
+        .services-content {
+            background-color: white;
+            padding: 3rem;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        }
+
+        .services-content p {
+            margin-bottom: 1.5rem;
+            font-size: 1.1rem;
+            line-height: 1.8;
+        }
+
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .service-card {
+            background-color: var(--light-color);
+            padding: 2rem;
+            border-radius: 8px;
+            box-shadow: 0 3px 10px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease;
+        }
+
+        .service-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .service-card i {
+            font-size: 2.5rem;
+            color: var(--primary-color);
+            margin-bottom: 1.5rem;
+        }
+
+        .service-card h4 {
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+            color: var(--secondary-color);
+        }
+
+        /* Village Information Section */
+        .village-info {
+            background-color: white;
+        }
+
+        .village-details {
+            background-color: var(--light-color);
+            padding: 3rem;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        }
+
+        .village-details p {
+            margin-bottom: 1.5rem;
+            font-size: 1.1rem;
+            line-height: 1.8;
+        }
+
+        .village-stats {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1.5rem;
+            margin-top: 3rem;
+        }
+
+        .stat-card {
+            background-color: white;
+            padding: 2rem;
+            border-radius: 8px;
+            box-shadow: 0 3px 10px rgba(0, 0, 0, 0.1);
+            text-align: center;
+            transition: transform 0.3s ease;
+        }
+
+        .stat-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .stat-card i {
+            font-size: 2.5rem;
+            color: var(--primary-color);
+            margin-bottom: 1.5rem;
+        }
+
+        .stat-card h4 {
+            font-size: 1.3rem;
+            margin-bottom: 0.8rem;
+        }
+
+        /* Balrampur Info Section */
+        .balrampur-info {
+            background-color: var(--light-color);
+        }
+
+        .balrampur-content {
+            background-color: white;
+            padding: 3rem;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        }
+
+        .balrampur-content p {
+            margin-bottom: 1.5rem;
+            font-size: 1.1rem;
+            line-height: 1.8;
+        }
+
+        .balrampur-highlights {
+            margin-top: 2rem;
+            padding-left: 2rem;
+        }
+
+        .balrampur-highlights li {
+            margin-bottom: 1rem;
+            font-size: 1.1rem;
+        }
+
+        /* Map Section */
+        .map-section {
+            background-color: white;
+        }
+
+        .map-container {
+            border: 15px solid white;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            border-radius: 8px;
+            overflow: hidden;
+        }
+
+        .map-container img {
+            width: 100%;
+            height: auto;
+            display: block;
+        }
+
+        /* Contact Section */
+        .contact-section {
+            background-color: var(--light-color);
+        }
+
+        .contact-content {
+            background-color: white;
+            padding: 3rem;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        }
+
+        .contact-info {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+
+        .contact-card {
+            background-color: var(--light-color);
+            padding: 2rem;
+            border-radius: 8px;
+            box-shadow: 0 3px 10px rgba(0, 0, 0, 0.1);
+            text-align: center;
+        }
+
+        .contact-card i {
+            font-size: 2.5rem;
+            color: var(--primary-color);
+            margin-bottom: 1.5rem;
+        }
+
+        .contact-card h4 {
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .contact-card p {
+            font-size: 1.2rem;
+            margin-bottom: 0;
+        }
+
+        .contact-card a {
+            color: var(--secondary-color);
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        .contact-card a:hover {
+            color: var(--primary-color);
+            text-decoration: underline;
+        }
+
+        /* Login Form (Hidden by default) */
+        .login-section {
+            display: none;
+            background-color: white;
+        }
+
+        .login-container {
+            max-width: 500px;
+            margin: 0 auto;
+            background-color: var(--light-color);
+            padding: 3rem;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        }
+
+        .form-group {
+            margin-bottom: 1.5rem;
+            text-align: left;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 0.5rem;
+            font-weight: 500;
+            font-size: 1.1rem;
+        }
+
+        .form-group input {
+            width: 100%;
+            padding: 1rem;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            font-size: 1rem;
+        }
+
+        .form-group input:focus {
+            outline: none;
+            border-color: var(--primary-color);
+        }
+
+        .submit-btn {
+            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+            color: white;
+            border: none;
+            padding: 1rem 2rem;
+            font-size: 1.1rem;
+            font-weight: 600;
+            border-radius: 50px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            width: 100%;
+            margin-top: 1rem;
+        }
+
+        .submit-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        /* Footer */
+        footer {
+            background-color: var(--dark-color);
+            color: white;
+            text-align: center;
+            padding: 3rem 0;
+        }
+
+        .footer-content {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .footer-links {
+            display: flex;
+            justify-content: center;
+            list-style: none;
+            margin: 2rem 0;
+        }
+
+        .footer-links li {
+            margin: 0 1.5rem;
+        }
+
+        .footer-links a {
+            color: white;
+            text-decoration: none;
+            font-size: 1.1rem;
+            transition: color 0.3s ease;
+        }
+
+        .footer-links a:hover {
+            color: var(--accent-color);
+        }
+
+        .social-links {
+            display: flex;
+            justify-content: center;
+            margin: 2rem 0;
+        }
+
+        .social-links a {
+            color: white;
+            font-size: 1.5rem;
+            margin: 0 1rem;
+            transition: color 0.3s ease;
+        }
+
+        .social-links a:hover {
+            color: var(--accent-color);
+        }
+
+        /* Responsive Styles */
+        @media (max-width: 1200px) {
+            .container {
+                padding: 0 30px;
+            }
+        }
+
+        @media (max-width: 992px) {
+            .nav-links {
+                position: fixed;
+                top: 80px;
+                left: -100%;
+                width: 100%;
+                height: calc(100vh - 80px);
+                background-color: var(--secondary-color);
+                flex-direction: column;
+                align-items: center;
+                justify-content: center;
+                transition: all 0.5s ease;
+            }
+
+            .nav-links.active {
+                left: 0;
+            }
+
+            .nav-links li {
+                margin: 1.5rem 0;
+            }
+
+            .hamburger {
+                display: block;
+            }
+
+            .hero h1 {
+                font-size: 3rem;
+            }
+
+            h2 {
+                font-size: 2.2rem;
+            }
+
+            h3 {
+                font-size: 1.6rem;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .navbar {
+                padding: 1rem;
+            }
+
+            .logo {
+                font-size: 1.5rem;
+            }
+
+            .hero {
+                padding: 5rem 1rem;
+                min-height: 60vh;
+            }
+
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+
+            .hero p {
+                font-size: 1.1rem;
+            }
+
+            section {
+                padding: 3rem 0;
+            }
+
+            .about-content, .services-content, 
+            .village-details, .balrampur-content,
+            .contact-content, .login-container {
+                padding: 2rem;
+            }
+        }
+
+        @media (max-width: 576px) {
+            .hero {
+                min-height: 50vh;
+            }
+
+            .hero h1 {
+                font-size: 2rem;
+            }
+
+            h2 {
+                font-size: 1.8rem;
+            }
+
+            .personal-info, .village-stats {
+                grid-template-columns: 1fr;
+            }
+
+            .info-card, .stat-card {
+                padding: 1.5rem;
+            }
+
+            .footer-links {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .footer-links li {
+                margin: 0.5rem 0;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navbar -->
+    <nav class="navbar">
+        <a href="#" class="logo">
+            <i class="fas fa-leaf"></i>
+            <span>Rahul</span>
+        </a>
+        
+        <ul class="nav-links">
+            <li><a href="#home">Home</a></li>
+            <li><a href="#about">About</a></li>
+            <li><a href="#services">Services</a></li>
+            <li><a href="#village">Village</a></li>
+            <li><a href="#balrampur">Balrampur</a></li>
+            <li><a href="#contact">Contact</a></li>
+            <li><button class="login-btn" id="loginBtn">Login</button></li>
+        </ul>
+        
+        <div class="hamburger" id="hamburger">
+            <i class="fas fa-bars"></i>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero" id="home">
+        <div class="container">
+            <h1>Welcome to Balrampur District</h1>
+            <p>Explore the beauty and culture of Uttar Pradesh's northernmost district, known for its rich history and natural resources.</p>
+            <a href="#about" class="cta-btn">Know More About Me</a>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section class="about-section" id="about">
+        <div class="container">
+            <h2>About Me</h2>
+            <div class="about-content">
+                <h3>Rahul - Software Engineer & Student</h3>
+                <p>Hello! I'm Rahul, a passionate software engineering student from Trigunayatpur Gumri, Balrampur. I come from a middle-class farming family background with 3 family members. I'm dedicated to learning and applying new technologies to solve real-world problems while staying connected to my agricultural roots.</p>
+                <p>As a student, I'm constantly expanding my knowledge in computer science fundamentals, programming languages, and software development methodologies. My goal is to become a skilled software engineer who can contribute meaningfully to the tech industry while remembering my humble beginnings.</p>
+                <p>When I'm not coding, I enjoy helping my family with farming activities, exploring new technologies, and contributing to my local community.</p>
+                
+                <div class="personal-info">
+                    <div class="info-card">
+                        <i class="fas fa-user"></i>
+                        <h4>Name</h4>
+                        <p>Rahul</p>
+                    </div>
+                    <div class="info-card">
+                        <i class="fas fa-users"></i>
+                        <h4>Family Members</h4>
+                        <p>3 People</p>
+                    </div>
+                    <div class="info-card">
+                        <i class="fas fa-graduation-cap"></i>
+                        <h4>Occupation</h4>
+                        <p>Student</p>
+                    </div>
+                    <div class="info-card">
+                        <i class="fas fa-laptop-code"></i>
+                        <h4>Profession</h4>
+                        <p>Software Engineer</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Services Section -->
+    <section class="services-section" id="services">
+        <div class="container">
+            <h2>Our Services</h2>
+            <div class="services-content">
+                <h3>Farming & Agricultural Services</h3>
+                <p>Coming from a middle-class farming background, I understand the importance of agriculture in our community. While my primary focus is on software engineering, I remain deeply connected to my farming roots and support agricultural initiatives in our village.</p>
+                
+                <div class="services-grid">
+                    <div class="service-card">
+                        <i class="fas fa-tractor"></i>
+                        <h4>Traditional Farming</h4>
+                        <p>Supporting traditional farming methods that have sustained our family for generations, while exploring ways to make them more efficient.</p>
+                    </div>
+                    <div class="service-card">
+                        <i class="fas fa-seedling"></i>
+                        <h4>Crop Management</h4>
+                        <p>Sharing knowledge about crop rotation, soil health, and sustainable farming practices learned from family experience.</p>
+                    </div>
+                    <div class="service-card">
+                        <i class="fas fa-laptop"></i>
+                        <h4>Tech for Farmers</h4>
+                        <p>Applying my software skills to develop simple tech solutions that can help local farmers with weather tracking, market prices, and farming techniques.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Village Information Section -->
+    <section class="village-info" id="village">
+        <div class="container">
+            <h2>Our Village: Trigunayatpur Gumri</h2>
+            <div class="village-details">
+                <h3>Trigunayatpur Gumri, Balrampur - 271609</h3>
+                <p>Welcome to our beautiful village nestled in the heart of Balrampur district. Trigunayatpur Gumri is known for its rich cultural heritage, agricultural prosperity, and warm community spirit.</p>
+                <p>Located in the northern part of Uttar Pradesh, our village boasts fertile lands that produce abundant crops, contributing significantly to the region's economy. The village is surrounded by lush green fields and is home to hardworking farmers who take pride in their agricultural traditions.</p>
+                <p>The village has excellent connectivity with nearby towns and cities, making it an important hub for local trade and commerce. Our community is known for its unity and celebrates various festivals with great enthusiasm throughout the year.</p>
+                
+                <div class="village-stats">
+                    <div class="stat-card">
+                        <i class="fas fa-map-marker-alt"></i>
+                        <h4>Location</h4>
+                        <p>Balrampur District, UP</p>
+                    </div>
+                    <div class="stat-card">
+                        <i class="fas fa-mail-bulk"></i>
+                        <h4>PIN Code</h4>
+                        <p>271609</p>
+                    </div>
+                    <div class="stat-card">
+                        <i class="fas fa-users"></i>
+                        <h4>Population</h4>
+                        <p>Approx. 5,000</p>
+                    </div>
+                    <div class="stat-card">
+                        <i class="fas fa-tractor"></i>
+                        <h4>Main Occupation</h4>
+                        <p>Agriculture</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Balrampur Info Section -->
+    <section class="balrampur-info" id="balrampur">
+        <div class="container">
+            <h2>About Balrampur District</h2>
+            <div class="balrampur-content">
+                <h3>Balrampur - The Northern Gem of Uttar Pradesh</h3>
+                <p>Balrampur district is located in the northern part of Uttar Pradesh, sharing its border with Nepal. It was carved out of Gonda district on May 22, 1997. The district is known for its rich cultural heritage and agricultural significance.</p>
+                <p>The district headquarters is located in Balrampur town, which serves as the administrative center. The region is primarily agrarian, with the majority of the population engaged in farming and related activities.</p>
+                <p>Balrampur has several historical and religious sites that attract visitors from across the state. The district is also known for its wildlife sanctuary, which is home to diverse flora and fauna.</p>
+                
+                <h4>Key Highlights:</h4>
+                <ul class="balrampur-highlights">
+                    <li>Established: 22 May 1997 (carved from Gonda district)</li>
+                    <li>Total Area: 3,349 square kilometers</li>
+                    <li>Population: Approximately 2.1 million (2011 census)</li>
+                    <li>Literacy Rate: 49.51% (as per 2011 census)</li>
+                    <li>Main Rivers: Rapti, Burhi Rapti, Kuano</li>
+                    <li>Major Crops: Rice, Wheat, Sugarcane, Pulses</li>
+                    <li>Famous For: Balrampur Tiger Reserve, Devipatan Temple</li>
+                </ul>
+            </div>
+        </div>
+    </section>
+
+    <!-- Map Section -->
+    <section class="map-section" id="map">
+        <div class="container">
+            <h2>Balrampur District Map</h2>
+            <div class="map-container">
+                <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/1/11/Balrampur_district_locator_map_UP.svg/1200px-Balrampur_district_locator_map_UP.svg.png" alt="Balrampur District Map">
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section class="contact-section" id="contact">
+        <div class="container">
+            <h2>Contact Me</h2>
+            <div class="contact-content">
+                <h3>Get In Touch</h3>
+                <p>Feel free to reach out to me for any inquiries, collaborations, or just to say hello. I'm always interested in meeting new people and discussing potential opportunities.</p>
+                
+                <div class="contact-info">
+                    <div class="contact-card">
+                        <i class="fas fa-phone-alt"></i>
+                        <h4>Phone</h4>
+                        <p><a href="tel:7408463848">+91 7408463848</a></p>
+                    </div>
+                    <div class="contact-card">
+                        <i class="fas fa-envelope"></i>
+                        <h4>Email</h4>
+                        <p><a href="mailto:rahul@example.com">rahul727376verma@gmail.com</a></p>
+                    </div>
+                    <div class="contact-card">
+                        <i class="fas fa-map-marker-alt"></i>
+                        <h4>Address</h4>
+                        <p>Trigunayatpur Gumri, Balrampur - 271609, Uttar Pradesh, India</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Login Form (Hidden by default) -->
+    <section class="login-section" id="loginSection">
+        <div class="container">
+            <div class="login-container">
+                <h2>Login</h2>
+                <form>
+                    <div class="form-group">
+                        <label for="username">Username</label>
+                        <input type="text" id="username" placeholder="Enter your username">
+                    </div>
+                    <div class="form-group">
+                        <label for="password">Password</label>
+                        <input type="password" id="password" placeholder="Enter your password">
+                    </div>
+                    <button type="submit" class="submit-btn">Login</button>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <h3>Rahul - Balrampur</h3>
+                <p>Software Engineer & Student | Proud Resident of Trigunayatpur Gumri</p>
+                
+                <ul class="footer-links">
+                    <li><a href="#home">Home</a></li>
+                    <li><a href="#about">About</a></li>
+                    <li><a href="#services">Services</a></li>
+                    <li><a href="#village">Village</a></li>
+                    <li><a href="#balrampur">Balrampur</a></li>
+                    <li><a href="#contact">Contact</a></li>
+                </ul>
+                
+                <div class="social-links">
+                    <a href="#"><i class="fab fa-facebook"></i></a>
+                    <a href="#"><i class="fab fa-twitter"></i></a>
+                    <a href="#"><i class="fab fa-instagram"></i></a>
+                    <a href="#"><i class="fab fa-linkedin"></i></a>
+                    <a href="#"><i class="fab fa-github"></i></a>
+                </div>
+                
+                <p>&copy; 2023 Rahul - Balrampur. All rights reserved.</p>
+                <p>Trigunayatpur Gumri, Balrampur - 271609, Uttar Pradesh, India</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Mobile Menu Toggle
+        const hamburger = document.getElementById('hamburger');
+        const navLinks = document.querySelector('.nav-links');
+        const loginBtn = document.getElementById('loginBtn');
+        const loginSection = document.getElementById('loginSection');
+
+        hamburger.addEventListener('click', () => {
+            navLinks.classList.toggle('active');
+            hamburger.innerHTML = navLinks.classList.contains('active') ? 
+                '<i class="fas fa-times"></i>' : '<i class="fas fa-bars"></i>';
+        });
+
+        // Login Button Toggle
+        loginBtn.addEventListener('click', () => {
+            loginSection.style.display = loginSection.style.display === 'none' ? 'block' : 'none';
+            window.scrollTo({
+                top: document.querySelector('.login-section').offsetTop - 80,
+                behavior: 'smooth'
+            });
+        });
+
+        // Close mobile menu when clicking on a link
+        document.querySelectorAll('.nav-links a').forEach(link => {
+            link.addEventListener('click', () => {
+                navLinks.classList.remove('active');
+                hamburger.innerHTML = '<i class="fas fa-bars"></i>';
+                
+                // Hide login section if any other link is clicked
+                if (link !== loginBtn) {
+                    loginSection.style.display = 'none';
+                }
+            });
+        });
+
+        // Smooth scrolling for all links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                e.preventDefault();
+                
+                const targetId = this.getAttribute('href');
+                if (targetId === '#') return;
+                
+                const targetElement = document.querySelector(targetId);
+                if (targetElement) {
+                    window.scrollTo({
+                        top: targetElement.offsetTop - 80,
+                        behavior: 'smooth'
+                    });
+                }
+            });
+        });
+    </script>
+</body>
+</html>
